@@ -1,0 +1,21 @@
+import java.io.IOException;
+
+
+public class hello {
+  public native void sayHello(int length) ;
+  public static void main (String args[]) {
+    String str = "I am a good boy" ;
+    hello h = new hello () ;
+    h.sayHello (str.length() ) ;
+  }
+  static {
+
+	   try {
+		      NativeUtils.loadLibraryFromJar("/hello.so");
+		    } catch (IOException e) {
+		      e.printStackTrace(); // This is probably not the best way to handle exception :-)
+		    }
+
+	 // System.loadLibrary ( "hello" ) ;
+  }
+}
